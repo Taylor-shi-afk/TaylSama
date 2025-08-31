@@ -1,0 +1,49 @@
+# Definimos la matriz
+matriz = [[1, 2, 3],
+          [4, 5, 6],
+          [7, 8, 9]]
+
+# Función para buscar un valor en la matriz
+def buscar_valor(matriz, valor):
+    """
+    Busca un valor en una matriz y devuelve su posición.
+
+    Args:
+        matriz (list): La matriz en la que se buscará.
+        valor (any): El valor a buscar.
+
+    Returns:
+        tuple: Una tupla con las coordenadas (fila, columna) si se encuentra el valor,
+               o None si no se encuentra.
+    """
+    for fila_idx, fila in enumerate(matriz):
+        try:
+            columna_idx = fila.index(valor)
+            return (fila_idx, columna_idx)
+        except ValueError:
+            # El valor no está en la fila actual, continuamos con la siguiente
+            continue
+    return None
+
+# Valor que deseamos buscar
+valor_a_buscar = 5
+
+# Realizamos la búsqueda
+resultado = buscar_valor(matriz, valor_a_buscar)
+
+# Mostramos el resultado
+if resultado:
+    fila, columna = resultado
+    print(f"✅ El valor {valor_a_buscar} se encontró en la posición: ({fila}, {columna})")
+else:
+    print(f"❌ El valor {valor_a_buscar} no se encontró en la matriz.")
+
+# Otro ejemplo con un valor no existente
+valor_a_buscar = 10
+resultado = buscar_valor(matriz, valor_a_buscar)
+
+if resultado:
+    fila, columna = resultado
+    print(f"✅ El valor {valor_a_buscar} se encontró en la posición: ({fila}, {columna})")
+else:
+    print(f"❌ El valor {valor_a_buscar} no se encontró en la matriz.")

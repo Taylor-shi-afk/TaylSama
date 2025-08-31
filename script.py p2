@@ -1,0 +1,47 @@
+# Definimos la matriz original
+matriz = [[9, 2, 8],
+          [4, 7, 6],
+          [1, 5, 3]]
+
+print("Matriz original:")
+for fila in matriz:
+    print(fila)
+
+
+# Función para ordenar una fila de la matriz usando Bubble Sort
+def ordenar_fila_con_bubble_sort(matriz, indice_fila):
+    """
+    Ordena una fila específica de una matriz usando Bubble Sort.
+
+    Args:
+        matriz (list): La matriz que contiene la fila a ordenar.
+        indice_fila (int): El índice de la fila que se va a ordenar.
+
+    Returns:
+        list: La matriz con la fila ordenada.
+    """
+    if indice_fila < 0 or indice_fila >= len(matriz):
+        print("❌ El índice de fila está fuera de los límites.")
+        return matriz
+
+    fila = matriz[indice_fila]
+    n = len(fila)
+
+    # Algoritmo de Bubble Sort
+    for i in range(n - 1):
+        for j in range(0, n - i - 1):
+            if fila[j] > fila[j + 1]:
+                fila[j], fila[j + 1] = fila[j + 1], fila[j]
+
+    return matriz
+
+
+# Índice de la fila que deseamos ordenar (la primera fila)
+indice_a_ordenar = 0
+
+# Realizamos la ordenación
+matriz_ordenada = ordenar_fila_con_bubble_sort(matriz, indice_a_ordenar)
+
+print("\nMatriz con la fila ordenada:")
+for fila in matriz_ordenada:
+    print(fila)
