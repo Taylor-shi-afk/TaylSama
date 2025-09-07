@@ -1,0 +1,43 @@
+import numpy as np
+import random
+
+# Definimos las dimensiones de la matriz 3D
+# Ciudades
+ciudades = ['Loja', 'Quito', 'Guayaquil']
+num_ciudades = len(ciudades)
+
+# Días de la semana
+dias_semana = ['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado', 'Domingo']
+num_dias_semana = len(dias_semana)
+
+# Semanas
+num_semanas = 4
+
+# 1. Crear una matriz 3D para representar los datos
+# Usamos un bucle para simular datos de temperatura aleatorios para cada celda.
+matriz_temperaturas = np.zeros((num_semanas, num_ciudades, num_dias_semana))
+
+for semana in range(num_semanas):
+    for ciudad in range(num_ciudades):
+        for dia in range(num_dias_semana):
+            # 2. Almacenar temperaturas diarias en cada celda
+            # Generamos una temperatura aleatoria entre 15 y 30 grados C°
+            matriz_temperaturas[semana, ciudad, dia] = random.randint(15, 30)
+
+print("Datos de la matriz de temperaturas (semana, ciudad, día):\n")
+print(matriz_temperaturas)
+print("\n" + "="*50 + "\n")
+
+# 3. Calcular el promedio de temperaturas para cada ciudad por cada una de las semanas
+# Usamos bucles animados para interactuar  a través de la matriz.
+print("Calculando y mostrando los promedios de temperatura:\n")
+for semana in range(num_semanas):
+    print(f"--- Semana {semana + 1} ---")
+    for ciudad in range(num_ciudades):
+        
+        temperaturas_semanales_ciudad = matriz_temperaturas[semana, ciudad, :]
+        promedio = np.mean(temperaturas_semanales_ciudad)
+
+        # 4. Mostrar el promedio de temperaturas en la pantalla
+        print(f"  > El promedio de la semana {semana + 1} en {ciudades[ciudad]} es: {promedio:.2f}°C")
+    print("\n")
